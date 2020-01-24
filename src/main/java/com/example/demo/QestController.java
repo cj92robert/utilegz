@@ -1,10 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,5 +28,16 @@ public class QestController {
     @GetMapping("/{search}")
     public List<Qest> getAll(@PathVariable String search){
         return repository.findByQuestionContaining(search);
+    }
+
+    @PostMapping("/upload/{id}")
+    public boolean upload(@RequestBody String answ,@PathVariable Long id){
+        Qest a = null;
+               if( repository.findById(id).isPresent()){
+                   a=repository.findById(id).get();
+                   a.setAnswer(answ);
+                   repository.save(a);
+               }
+        return true;
     }
 }
