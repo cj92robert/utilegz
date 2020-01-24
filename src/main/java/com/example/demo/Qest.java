@@ -8,15 +8,15 @@ public class Qest {
     @Id
     private long id;
     @Column(length = 500)
-    private String Question;
-    private String Answer;
-
-    public Qest() {
-    }
+    private String question;
+    private String answer;
 
     public Qest(String question, String answer) {
-        Question = question;
-        Answer = answer;
+        this.question = question;
+        this.answer = answer;
+    }
+
+    public Qest() {
     }
 
     public long getId() {
@@ -28,18 +28,18 @@ public class Qest {
     }
 
     public String getQuestion() {
-        return Question;
+        return question;
     }
 
     public void setQuestion(String question) {
-        Question = question;
+        this.question = question;
     }
 
     public String getAnswer() {
-        return Answer;
+        return answer;
     }
 
     public void setAnswer(String answer) {
-        Answer = answer;
+        this.answer = answer;
     }
 }

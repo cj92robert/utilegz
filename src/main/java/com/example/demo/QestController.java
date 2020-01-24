@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
@@ -25,8 +26,8 @@ public class QestController {
 
 
 
-    @GetMapping
-    public List<Qest> getAll(){
-        return repository.findAll();
+    @GetMapping("/{search}")
+    public List<Qest> getAll(@PathVariable String search){
+        return repository.findByQuestionContaining(search);
     }
 }
